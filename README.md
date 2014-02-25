@@ -4,9 +4,18 @@ While the SFML forum provides a section for [projects](http://en.sfml-dev.org/fo
 
 ## Dependencies
 
+### Back-end
+
 * [Kohana](http://kohanaframework.org/)
 * [KOstache](https://github.com/zombor/KOstache/)
  * [Mustache.php](https://github.com/bobthecow/mustache.php/)
+
+### Front-end
+
+* [Bootstrap](http://getbootstrap.com/)
+* [Jasny Boostrap](http://jasny.github.io/bootstrap/)
+* [Font Awesome](http://fontawesome.io/)
+* [jQuery](http://jquery.com/)
 
 ## License
 
