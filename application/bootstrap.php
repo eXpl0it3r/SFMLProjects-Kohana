@@ -142,10 +142,11 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('home', '')
+Route::set('page', '(<route>)')
 	->defaults(array(
 		'controller' => 'Page',
-		'action'     => 'home',
+		'action'     => 'view',
+		'route'      => 'home',
 	));
 
 Route::set('default', '(<template_path>)', array('template_path' => '.*'))

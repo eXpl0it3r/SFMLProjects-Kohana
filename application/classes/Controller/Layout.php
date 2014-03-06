@@ -7,18 +7,21 @@ abstract class Controller_Layout extends Controller
 {
 	/**
 	 * Stores the view class object to render
+	 *
 	 * @var View
 	 */
 	protected $view;
 
 	/**
 	 * Stores the template to render
+	 *
 	 * @var string
 	 */
 	protected $template = NULL;
 
 	/**
 	 * Stores the name of the layout to use to render the view
+	 *
 	 * @var string
 	 */
 	protected $layout = 'layout';
@@ -46,10 +49,19 @@ abstract class Controller_Layout extends Controller
 	 */
 	public function after()
 	{
-		$this->view->request = $this->request;
-
 		if(get_class($this->view) !== 'stdClass')
-			return $this->response->body(Kostache_Layout::factory($this->layout)->render($this->view, $this->template));
+		{
+			if($this->layout === NULL)
+				// Without layout
+				return $this->response->body(
+					Kostache::factory()->render($this->view, $this->template)
+				);
+			else
+				// With layout
+				return $this->response->body(
+					Kostache_Layout::factory($this->layout)->render($this->view, $this->template)
+				);
+		}
 		else
 			throw New HTTP_Exception_404('View not found.');
 	}
