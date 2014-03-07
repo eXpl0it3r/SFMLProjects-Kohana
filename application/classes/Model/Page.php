@@ -3,8 +3,7 @@
 /**
  * Database Model for static pages.
  */
-class Model_Page extends Model
-{
+class Model_Page extends Model {
 
 	/**
 	 * Get static page info by it's route.
@@ -18,7 +17,7 @@ class Model_Page extends Model
 			->where('route', '=', $route)
 			->as_object()->execute();
 
-		return ($result ? $result->current() : false);
+		return $result ? $result->current() : false;
 	}
 
 }

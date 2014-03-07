@@ -3,8 +3,7 @@
 /**
  * The default static page view.
  */
-class View_Page_View extends View_Layout
-{
+class View_Page_View extends View_Layout {
 
 	/**
 	 * Title on the page itself.

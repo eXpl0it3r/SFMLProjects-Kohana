@@ -3,8 +3,7 @@
 /**
  * User Model
  */
-class Model_User_User extends Model
-{
+class Model_User_User extends Model {
 
 	/**
 	 * Get the user by the username.
@@ -18,10 +17,7 @@ class Model_User_User extends Model
 			->where('username', '=', $username)
 			->as_object()->execute();
 
-		if(!$result)
-			return false;
-
-		return $result->current();
+		return $result ? $result->current() : false;
 	}
 
 	/**
@@ -35,10 +31,11 @@ class Model_User_User extends Model
 	{
 		$result = DB::update('users')
 			->set(array(
-				'logins' => DB::expr('logins + 1'),
-				'last_login' => DB::expr('NOW()')
+				'logins'     => DB::expr('logins + 1'),
+				'last_login' => DB::expr('NOW()'),
 			))
 			->where('username', '=', $username)
 			->execute();
 	}
+
 }

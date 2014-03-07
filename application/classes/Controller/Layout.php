@@ -3,8 +3,8 @@
 /**
  * Layout controller. All controllers should extend this one.
  */
-abstract class Controller_Layout extends Controller
-{
+abstract class Controller_Layout extends Controller {
+
 	/**
 	 * Stores the view class object to render
 	 *
@@ -36,7 +36,7 @@ abstract class Controller_Layout extends Controller
 		$this->view = new stdClass;
 		$view_class_name = 'View_'.ucfirst($this->request->controller()).'_'.ucfirst($this->request->action());
 
-		if(Kohana::find_file('classes', str_replace('_', '/', $view_class_name)))
+		if (Kohana::find_file('classes', str_replace('_', '/', $view_class_name)))
 		{
 			$this->view = new $view_class_name;
 		}
@@ -49,9 +49,9 @@ abstract class Controller_Layout extends Controller
 	 */
 	public function after()
 	{
-		if(get_class($this->view) !== 'stdClass')
+		if (get_class($this->view) !== 'stdClass')
 		{
-			if($this->layout === NULL)
+			if ($this->layout === NULL)
 				// Without layout
 				return $this->response->body(
 					Kostache::factory()->render($this->view, $this->template)
@@ -65,4 +65,5 @@ abstract class Controller_Layout extends Controller
 		else
 			throw New HTTP_Exception_404('View not found.');
 	}
+
 }

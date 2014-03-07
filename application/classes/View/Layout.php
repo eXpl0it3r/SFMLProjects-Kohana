@@ -3,10 +3,27 @@
 /**
  * Sets up partials for KOstache.
  */
-class View_Layout
-{
+class View_Layout {
+
+	/**
+	 * Website head title.
+	 *
+	 * @var string Website title
+	 */
 	public $page_title = 'SFML Projects';
+
+	/**
+	 * Website description for the meta tag.
+	 *
+	 * @var string Website description
+	 */
 	public $meta_description = 'Website dedicated to host, share and archive projects made with SFML.';
+
+	/**
+	 * Website author for the meta tag.
+	 *
+	 * @var string Website author
+	 */
 	public $meta_author = 'eXpl0it3r';
 
 	/**
@@ -29,7 +46,6 @@ class View_Layout
 		return URL::base().'assets/';
 	}
 
-
 	/**
 	 * The current page that we are on
 	 *
@@ -39,4 +55,5 @@ class View_Layout
 	{
 		return $this->request->uri();
 	}
+
 }
