@@ -12,9 +12,14 @@ class Controller_Page extends Controller_Layout {
 	 */
 	public function action_view()
 	{
+		$route = $this->request->param('route');
+
 		$model = Model::factory('Page');
 
-		$page = $model->get($this->request->param('route'));
+		$page = $model->get($route);
+
+		$view_class_name = 'View_Page_'.ucfirst($route);
+		$this->view = new $view_class_name;
 
 		if ( ! $page)
 			throw new HTTP_Exception_404('Page not found');

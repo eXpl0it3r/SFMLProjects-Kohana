@@ -68,7 +68,7 @@ mb_substitute_character('none');
 /**
  * Set the default language
  */
-I18n::lang('en-us');
+I18n::lang('en');
 
 if (isset($_SERVER['SERVER_PROTOCOL']))
 {

@@ -56,4 +56,24 @@ class View_Layout {
 		return $this->request->uri();
 	}
 
+	/**
+	 * Returns 'Terms of Use' or the translation of it.
+	 *
+	 * @return string
+	 */
+	public function terms()
+	{
+		return __('Terms of Use');
+	}
+
+	/**
+	 * Return 'Imprint' or the translation of it.
+	 *
+	 * @return string
+	 */
+	public function imprint()
+	{
+		return __('Imprint');
+	}
+
 }
