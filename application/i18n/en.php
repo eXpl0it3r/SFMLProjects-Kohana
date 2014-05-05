@@ -5,7 +5,7 @@ return array
 	'Welcome Home' => 'With the website we want to provide a platform to host, share and archive projects that were made with <a href="http://www.sfml-dev.org/">SFML</a>. However to reach the goal there\'s a lot of work that needs to be done first. If you have ideas, suggestions or even want to help build this site, don\'t hesitate to contact us.',
 	'Full Terms' => '				<h3>Age</h3>
 				<ul>
-					<li>By using this site you must be at least thirdteen (13) years of age OR have permission of your legal guardian OR parent</li>
+					<li>By using this site you must be at least thirteen (13) years of age OR have permission of your legal guardian OR parent</li>
 					<li>This site does not knowingly collect, either online or offline, personal information from persons under the age of thirteen (13).</li>
 				</ul>
 				<h3>Language</h3>
