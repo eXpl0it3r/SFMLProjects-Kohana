@@ -67,13 +67,13 @@ class View_Layout {
 	}
 
 	/**
-	 * Return 'Imprint' or the translation of it.
+	 * Return 'Legal Notice' or the translation of it.
 	 *
 	 * @return string
 	 */
-	public function imprint()
+	public function legal()
 	{
-		return __('Imprint');
+		return __('Legal Notice');
 	}
 
 }
