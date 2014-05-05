@@ -27,6 +27,13 @@ abstract class Controller_Layout extends Controller {
 	protected $layout = 'layout';
 
 	/**
+	 * Stores the currenltly active navigation entry.
+	 *
+	 * @var string
+	 */
+	protected $active;
+
+	/**
 	 * Automatically loads a view class into $this->view
 	 *
 	 * @return void
@@ -52,15 +59,31 @@ abstract class Controller_Layout extends Controller {
 		if (get_class($this->view) !== 'stdClass')
 		{
 			if ($this->layout === NULL)
+			{
 				// Without layout
 				return $this->response->body(
 					Kostache::factory()->render($this->view, $this->template)
 				);
+			}
 			else
+			{
+				// Get the navigation entries
+				$mod_nav = Model::factory('Navigation');
+				$navigation = $mod_nav->get_all();
+
+				// Set the right entry active
+				for ($i = 0; $i < $navigation->count(); $i++)
+				{
+					$navigation[$i]->active = ($navigation[$i]->name == $this->active);
+				}
+
+				$this->view->navigation = $navigation;
+
 				// With layout
 				return $this->response->body(
 					Kostache_Layout::factory($this->layout)->render($this->view, $this->template)
 				);
+			}
 		}
 		else
 			throw New HTTP_Exception_404('View not found.');

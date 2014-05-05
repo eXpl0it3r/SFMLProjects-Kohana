@@ -27,6 +27,13 @@ class View_Layout {
 	public $meta_author = 'eXpl0it3r';
 
 	/**
+	 * Entries for the navigation.
+	 *
+	 * @var Database_Result Navigation entries
+	 */
+	public $navigation;
+
+	/**
 	 * The base URL of the website.
 	 *
 	 * @return string
