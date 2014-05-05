@@ -2,6 +2,15 @@
 
 While the SFML forum provides a section for [projects](http://en.sfml-dev.org/forums/index.php?board=10.0), it happens too often that nice projects get lost in the depth of that sub-forum or that the archive with the game gets deleted. With the [SFML Projects](http://www.sfmlprojects.org/) website we want to provide a platform to host, share and archive projects that were made with or for [SFML](http://www.sfml-dev.org/).
 
+## Contribute
+
+Since this project is open source, I very gladly take in contributions. You can do this by utilizing GitHub's ways of forking and creating pull requests or by joining the IRC channel #sfmlprojects on irc.boxbox.org and talk to me. I'll also hand out commit rights to people that seem eager to help an can follow these few rules:
+
+* The SFML Projects uses the conventions and code style defined by the [Kohana team](http://kohanaframework.org/3.3/guide/kohana/conventions).
+* The SFML projects uses the Gitflow workflow as "invented" by [nvie](http://nvie.com/posts/a-successful-git-branching-model/) and nicely described [here](https://www.atlassian.com/de/git/workflows#!workflow-gitflow) by Atlassian.
+* For every non-trivial change a pull request needs to be created, so I or others can review the changes.
+* The only one merging pull requests into the dev or master branch is eXpl0it3r.
+
 ## Install
 
 I'm not a fan of all these package manager and thus the install process is simply using Git.
