@@ -11,7 +11,9 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li id="navbar_home"><a href="/">Home</a></li>
+				{{#navigation}}
+					<li {{#active}}class="active"{{/active}}><a href="{{route}}">{{name}}</a></li>
+				{{/navigation}}
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
