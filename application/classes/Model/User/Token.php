@@ -3,14 +3,14 @@
 /**
  * User Token Model
  */
-class Model_User_Token extends Model
-{
+class Model_User_Token extends Model {
+
 	/**
 	 * Construct model and garbage collect
 	 */
 	public function __construct()
 	{
-			if(mt_rand(1, 100) === 1)
+			if (mt_rand(1, 100) === 1)
 			{
 				// Do garbage collection
 				$this->delete_expired();
@@ -42,7 +42,7 @@ class Model_User_Token extends Model
 			->where('token', '=', $token)
 			->as_object()->execute();
 
-		return ($result ? $result->current() : false);
+		return $result ? $result->current() : false;
 	}
 
 	/**
@@ -80,26 +80,34 @@ class Model_User_Token extends Model
 	public function create($data)
 	{
 		// We want an object to work with
-		if(!is_object($data))
+		if ( ! is_object($data))
 			$data = (object) $data;
 
 		$token = DB::insert('user_tokens')
-			->columns(array('user_id', 'user_agent', 'token', 'created', 'expires'))
-			->values(array($data->user_id, $data->user_agent,
-				$this->create_token(), DB::expr('NOW()'), $data->expires))
+			->columns(array(
+				'user_id',
+				'user_agent',
+				'token',
+				'created',
+				'expires'
+			))
+			->values(array(
+				$data->user_id,
+				$data->user_agent,
+				$this->create_token(),
+				DB::expr('NOW()'),
+				$data->expires
+			))
 			->execute();
 
-		if($token[1] == 0)
+		if ($token[1] == 0)
 			return false;
 
 		$result = DB::select()->from('user_tokens')
 			->where('id', '=', $token[0])
 			->as_object()->execute();
-
-		if(!$result)
-			return false; 
 		
-		return $result->current();
+		return $result ? $result->current() : false;
 	}
 
 	/**
@@ -114,16 +122,16 @@ class Model_User_Token extends Model
 
 		$result = DB::update('user_token')
 			->set(array(
-				'user_id' => $data->user_id,
+				'user_id'    => $data->user_id,
 				'user_agent' => $data->user_agent,
-				'token' => $data->token,
-				'created' => $data->created,
-				'expires' => $data->expires
+				'token'      => $data->token,
+				'created'    => $data->created,
+				'expires'    => $data->expires
 			))
 			->where('id', '=', $data->id)
 			->execute();
 
-		return ($result > 0 ? $data : false);
+		return $result > 0 ? $data : false;
 	}
 
 	/**
@@ -145,4 +153,5 @@ class Model_User_Token extends Model
 
 		return $token;
 	}
+
 }

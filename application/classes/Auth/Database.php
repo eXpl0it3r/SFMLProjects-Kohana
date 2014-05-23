@@ -1,11 +1,11 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
+
 /**
  * Database Auth driver.
  *
  * @TODO Support roles
  */
-class Auth_Database extends Auth
-{
+class Auth_Database extends Auth {
 
 	/**
 	 * Checks if a session is active.
@@ -18,7 +18,7 @@ class Auth_Database extends Auth
 		// Get the user from the session
 		$user = $this->get_user();
 
-		if(!$user)
+		if ( ! $user)
 			return false;
 
 		// TODO: Role checking
@@ -36,7 +36,7 @@ class Auth_Database extends Auth
 	 */
 	protected function _login($username, $password, $remember)
 	{
-		if(is_string($password))
+		if (is_string($password))
 		{
 			// Create a hashed password
 			$password = $this->hash($password);
@@ -47,9 +47,9 @@ class Auth_Database extends Auth
 		$user = $mod_user->get_by_username($username);
 
 		// If the passwords match, perform a login
-		if($user && $user->password === $password)
+		if ($user AND $user->password === $password)
 		{
-			if($remember === true)
+			if ($remember === true)
 			{
 				// Token data
 				$data = array(
@@ -88,7 +88,7 @@ class Auth_Database extends Auth
 	{
 		$mod_user = new Model_User;
 
-		if($mark_session_as_forced === true)
+		if ($mark_session_as_forced === true)
 		{
 			// Mark the session as forced, to prevent users from changing account information
 			$this->_session->set('auth_forced', true);
@@ -105,7 +105,7 @@ class Auth_Database extends Auth
 	 */
 	public function auto_login()
 	{
-		if($token = Cookie::get('authautologin'))
+		if ($token = Cookie::get('authautologin'))
 		{
 			$mod_token = new Model_User_Token;
 			$mod_token = new Model_User;
@@ -113,11 +113,11 @@ class Auth_Database extends Auth
 			// Load the token and user
 			$token = $mod_token->get_by_token($token);
 
-			if($token)
+			if ($token)
 			{
 				$user = $mod_user->get($token->user_id);
 
-				if($user && $token->user_agent === sha1(Request::$user_agent))
+				if ($user && $token->user_agent === sha1(Request::$user_agent))
 				{
 					// Save the token to create a new unique token
 					$token = $mod_token->update_token($token);
@@ -148,10 +148,10 @@ class Auth_Database extends Auth
 	{
 		$user = parent::get_user($default);
 
-		if($user === $default)
+		if ($user === $default)
 		{
 			// check for "remembered" login
-			if(($user = $this->auto_login()) === false)
+			if (($user = $this->auto_login()) === false)
 				return $default;
 		}
 
@@ -170,7 +170,7 @@ class Auth_Database extends Auth
 		// Set by force_login()
 		$this->_session->delete('auth_forced');
 
-		if($token = Cookie::get('authautologin'))
+		if ($token = Cookie::get('authautologin'))
 		{
 			// Delete the autologin cookie to prevent re-login
 			Cookie::delete('authautologin');
@@ -180,9 +180,9 @@ class Auth_Database extends Auth
 
 			$token = $mod_token->get_by_token($token);
 
-			if($token)
+			if ($token)
 			{
-				if($logout_all)
+				if ($logout_all)
 				{
 					// Delete all user tokens. This isn't the most elegant solution but does the job
 					$tokens = $mod_token->delete_user($token->user_id);
@@ -209,7 +209,7 @@ class Auth_Database extends Auth
 
 		$user = $mod_user->get_by_username($username);
 
-		if(!$user)
+		if ( ! $user)
 			return '';
 
 		return $user->password;
@@ -241,7 +241,7 @@ class Auth_Database extends Auth
 	{
 		$username = $this->get_user();
 
-		if(!$username)
+		if ( ! $username)
 			return false;
 
 		return ($this->hash($password) === $this->password($username));

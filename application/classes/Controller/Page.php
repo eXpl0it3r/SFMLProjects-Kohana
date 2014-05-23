@@ -1,32 +1,39 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 
 /**
- * Shows basic pages of the website.
+ * Shows basic/static pages of the website.
  */
-class Controller_Page extends Controller_Layout
-{
-	/**
-	 * Loads and displays the Home template
-	 *
-	 * @return void
-	 */
-	public function action_home()
-	{
-		
-	}
+class Controller_Page extends Controller_Layout {
 
 	/**
-	 * Autoloads view templates which don't have a specific route setup
+	 * View static page from the database or template.
 	 *
 	 * @return void
 	 */
-	public function action_loader()
+	public function action_view()
 	{
-		$template_path = $this->request->param('template_path');
-		if(Kohana::find_file('templates', $template_path, 'mustache'))
+		$route = $this->request->param('route');
+
+		$model = Model::factory('Page');
+
+		$page = $model->get($route);
+
+		$view_class_name = 'View_Page_'.ucfirst($route);
+		$this->view = new $view_class_name;
+
+		if ( ! $page)
+			throw new HTTP_Exception_404('Page not found');
+
+		if ($page->template)
 		{
-			$this->view = new View_Layout;
-			$this->template = $template_path;
+			$this->template = 'page/'.$page->template;
 		}
+
+		$this->view->page_title = $page->title.' - '.$this->view->page_title;
+		$this->view->title      = $page->title;
+		$this->view->content    = $page->content;
+
+		$this->active = 'Home';
 	}
+
 }
