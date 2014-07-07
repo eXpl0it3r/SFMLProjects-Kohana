@@ -5,3 +5,7 @@ body {
 #footer {
 	margin-top: 30px;
 }
+
+#content {
+	min-height: 700px;
+}
