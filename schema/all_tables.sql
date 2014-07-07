@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `navigations` (
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `route` varchar(80) NOT NULL,
-  `template` varchar(80) DEFAULT NULL,
+  `language` varchar(2) NOT NULL DEFAULT 'en',
   `title` varchar(80) NOT NULL,
   `content` text NOT NULL,
   PRIMARY KEY (`id`),
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `user_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `token` (`token`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Constraints for dumped tables
