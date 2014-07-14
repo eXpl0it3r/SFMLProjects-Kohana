@@ -1,11 +1,16 @@
 body {
-  padding-top: 70px;
+  padding-top   : 70px;
+  padding-bottom: 70px;
 }
 
 #footer {
-	margin-top: 30px;
+  position: fixed;
+  bottom  : 0px;
+  padding : 0px;
+  height  : 41px;
+  width   : 100%;
 }
 
-#content {
-	min-height: 700px;
+.container #navbar {
+  position: fixed;
 }
