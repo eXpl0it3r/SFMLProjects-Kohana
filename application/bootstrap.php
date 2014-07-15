@@ -142,6 +142,13 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+Route::set('projects', 'projects(/<listmode>)')
+	->defaults(array(
+		'controller' => 'Projects',
+		'action'     => 'list',
+		'listmode'   => 'list',
+	));
+
 Route::set('page', '(<route>)')
 	->defaults(array(
 		'controller' => 'Page',
