@@ -72,10 +72,8 @@ abstract class Controller_Layout extends Controller {
 				$navigation = $mod_nav->get_all();
 
 				// Set the right entry active
-				for ($i = 0; $i < $navigation->count(); $i++)
-				{
-					$navigation[$i]->active = ($navigation[$i]->name == $this->active);
-				}
+				foreach ($navigation as $nav_item)
+					$nav_item->active = ($nav_item->name == $this->active);
 
 				$this->view->navigation = $navigation;
 

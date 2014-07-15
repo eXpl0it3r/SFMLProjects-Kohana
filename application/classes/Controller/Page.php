@@ -27,7 +27,7 @@ class Controller_Page extends Controller_Layout {
 		$this->view->title      = $page->title;
 		$this->view->content    = $page->content;
 
-		$this->active = 'Home';
+		$this->active = $page->title;
 	}
 
 }
