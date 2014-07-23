@@ -67,6 +67,9 @@ abstract class Controller_Layout extends Controller {
 			}
 			else
 			{
+				// Get currently logged in user
+				$this->view->username = Auth_Database::instance()->get_user();
+
 				// Get the navigation entries
 				$mod_nav = Model::factory('Navigation');
 				$navigation = $mod_nav->get_all();
@@ -76,6 +79,9 @@ abstract class Controller_Layout extends Controller {
 					$nav_item->active = ($nav_item->name == $this->active);
 
 				$this->view->navigation = $navigation;
+
+				if ( $this->active === 'Login' )
+					$this->view->active_login = 1;
 
 				// With layout
 				return $this->response->body(

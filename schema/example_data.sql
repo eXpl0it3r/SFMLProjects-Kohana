@@ -18,9 +18,10 @@ INSERT INTO `pages` (`id`, `route`, `language`, `title`, `content`) VALUES
 --
 -- Dumping data for table `users`
 --
+-- default admin password is 'admin'
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `logins`, `last_login`) VALUES
-(1, 'dev@sfmlprojects.org', 'admin', 'd66420f0b9b8f17e4a0858e659aed4f6eadbcf35ded6a4915702253a99591f8b', 0, '2014-02-26 16:07:52');
+(1, 'dev@sfmlprojects.org', 'admin', '913fa9743d0b58fc2928ca0776587ace6f2c9c28b15a4216b32a750b9151a62e', 0, '2014-02-26 16:07:52');
 
 INSERT INTO `projects` (`id`, `title`, `summary`, `description`, `screenshots`, `protected`, `logo`, `thumbnail`, `tags`, `category`, `creadits`) VALUES
 (1, 'Mario Bros.', 'The player takes on the role of the Mario. The objective is to race through the Mushroom Kingdom, survive the main antagonist Bowser''s forces and save Princess Toadstool.', 'Video games published and produced by Nintendo starring the fictional character Mario. The franchise also includes other forms of media including several television series and a feature film. It was originally created by game designer Shigeru Miyamoto with the arcade Donkey Kong, released on July 9, 1981. The games have been developed by a variety of developers including Nintendo, Hudson Soft, and AlphaDream. Most Mario games have either been released for the arcade or Nintendo video game consoles and handhelds dating from the Nintendo Entertainment System to the current generation of video game consoles.', '01.png', 0, 'logo.png', 'thumbnail.png', 'game sfml 2d platformer', 'Game', 'me and my neighbour totoro'),
