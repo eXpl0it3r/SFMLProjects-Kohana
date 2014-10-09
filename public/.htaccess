@@ -2,7 +2,7 @@
 RewriteEngine on
 
 # Allow access to index.php, robots.txt and the assets/ directory
-RewriteCond $1 !^(index\.php|assets|robots\.txt)
+RewriteCond $1 !^(index\.php|assets|user_data|robots\.txt)
 
 # Redirect all the other request to index.php
 RewriteRule ^(.*)$ /index.php?/$1 [L]

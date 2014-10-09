@@ -64,6 +64,27 @@ CREATE TABLE IF NOT EXISTS `user_tokens` (
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects`
+--
+
+CREATE TABLE IF NOT EXISTS `projects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(40) NOT NULL,
+  `summary` varchar(400) NOT NULL,
+  `description` text NOT NULL,
+  `screenshots` text NOT NULL,
+  `protected` tinyint(1) NOT NULL,
+  `logo` varchar(40) NOT NULL,
+  `thumbnail` varchar(40) NOT NULL,
+  `tags` varchar(60) NOT NULL,
+  `category` varchar(40) NOT NULL,
+  `creadits` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Constraints for dumped tables
 --
