@@ -149,6 +149,12 @@ Route::set('projects', 'projects(/<listmode>)')
 		'listmode'   => 'list',
 	));
 
+Route::set('auth', '<action>', array('action' => 'login|logout'))
+	->defaults(array(
+		'controller' => 'Auth',
+		'action'     => 'login',
+	));
+
 Route::set('page', '(<route>)')
 	->defaults(array(
 		'controller' => 'Page',

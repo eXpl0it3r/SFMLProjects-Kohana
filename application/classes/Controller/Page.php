@@ -12,13 +12,12 @@ class Controller_Page extends Controller_Layout {
 	 */
 	public function action_view()
 	{
+		$this->view = new View_Page_View;
 		$route = $this->request->param('route');
 
 		$model = Model::factory('Page');
-
 		$page = $model->get($route);
 
-		$this->view = new View_Page_View;
 
 		if ( ! $page)
 			throw new HTTP_Exception_404('Page not found');
@@ -26,6 +25,7 @@ class Controller_Page extends Controller_Layout {
 		$this->view->page_title = $page->title.' - '.$this->view->page_title;
 		$this->view->title      = $page->title;
 		$this->view->content    = $page->content;
+
 
 		$this->active = $page->title;
 	}

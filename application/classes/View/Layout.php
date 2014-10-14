@@ -34,6 +34,27 @@ class View_Layout {
 	public $navigation;
 
 	/**
+	 * Currently logged in user
+	 *
+	 * @var string User name
+	 */
+	public $username;
+
+	/**
+	 * Alerts for current page
+	 *
+	 * @var array Alerts
+	 */
+	public $alerts = array();
+
+	/**
+	 * Is the login page active for now
+	 *
+	 * @var bool
+	 */
+	public $active_login = NULL;
+
+	/**
 	 * The base URL of the website.
 	 *
 	 * @return string
@@ -83,4 +104,20 @@ class View_Layout {
 		return __('Legal Notice');
 	}
 
+	/**
+	 * Add alert to page.
+	 *
+	 * @param   string   $class    alert class (success, info, warning, danger)
+	 * @param   string   $caption  alert caption will be 'strong'
+	 * @param   string   $text     alert text
+	 * @return nothing
+	 */
+	public function add_alert($class, $caption, $text)
+	{
+		array_push($this->alerts, array(
+			"class" => $class,
+			"caption" => $caption,
+			"text" => $text
+		));
+	}
 }

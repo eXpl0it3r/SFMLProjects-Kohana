@@ -15,6 +15,16 @@
 					<li {{#active}}class="active"{{/active}}><a href="{{route}}">{{name}}</a></li>
 				{{/navigation}}
 			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				{{#username}}
+				<p class="navbar-text">Signed in as {{username}}</p>
+				<li><a href="/logout">Logout</a></li>
+				{{/username}}
+				{{^username}}
+				<li {{#active_login}}class="active"{{/active_login}}><a href="/login">Login</a></li>
+				{{/username}}
+			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
 </div>
